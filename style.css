@@ -1,0 +1,199 @@
+:root {
+  --primary-color: #06b3bc;
+  --text-color: #042d2f;
+  --text-color-lighter: #074c50;
+  --secondary-color: #F78828;
+  --warn-color: #FDD219;
+  --danger-color: #FA5456;
+  --white: #FFFFFF;
+  --off-white: #F1F2F4;
+  --gray: #A1A1A1;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23a1a1a1' fill-opacity='0.59' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+header {
+  background-color: var(--primary-color);
+  padding: 48px 0;
+  border-bottom: var(--secondary-color) 6px solid;
+}
+
+header a {
+  position: relative;
+  display: inline-block;
+  font-size: 1.5rem;
+  color: var(--off-white);
+  text-decoration: none;
+  transition: color 220ms ease, transform 220ms ease;
+}
+
+header a::after {
+  position: absolute;
+  right: 0;
+  bottom: -6px;
+  left: 0;
+  height: 3px;
+  background-color: var(--warn-color);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 260ms ease;
+}
+
+header a:hover,
+header a:focus-visible {
+  color: var(--white);
+  transform: translateY(-3px);
+  animation: header-link-glint 420ms ease-out;
+}
+
+header a:hover::after,
+header a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+@keyframes header-link-glint {
+  50% { text-shadow: 0 0 10px rgb(255 255 255 / 75%); }
+}
+
+main a {
+  color: var(--danger-color);
+  text-decoration: none;
+  background-image: linear-gradient(var(--secondary-color), var(--secondary-color));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 2px;
+  transition: color 220ms ease, background-size 260ms ease;
+}
+
+main a:hover,
+main a:focus-visible {
+  color: var(--text-color-lighter);
+  background-size: 100% 2px;
+  animation: article-link-flash 420ms ease-out;
+}
+
+@keyframes article-link-flash {
+  50% { text-shadow: 0 0 7px rgb(247 136 40 / 55%); }
+}
+
+main > article, nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+nav {
+  display: flex;
+}
+
+nav > a:not(:first-of-type) {
+  margin-left: 24px;
+}
+
+nav > a.logo {
+  margin-right: auto;
+  text-transform: uppercase;
+}
+
+main > section, main > article {
+  margin-bottom: 96px;
+  box-shadow: 4px 4px 10px var(--gray);
+  background-color: var(--white);
+}
+
+main > section.hero {
+  height: 300px;
+  background-image: url(https://picsum.photos/1920/1000);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+
+section.hero > .call-to-action {
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: var(--white) 0px 0px 10px, var(--white) 0px 0px 20px, var(--gray) 2px 2px 2px;
+  padding: 0 48px;
+  margin: 0;
+}
+
+section.hero > button {
+  background-color: var(--secondary-color);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+section.hero > button:hover,
+section.hero > button:focus-visible {
+  background-color: var(--warn-color);
+  box-shadow: 0 8px 18px rgb(4 45 47 / 25%);
+  transform: translateY(-3px);
+  animation: button-pop 460ms ease-out;
+}
+
+@keyframes button-pop {
+  45% { transform: translateY(-7px) scale(1.06); }
+}
+
+main article {
+  padding: 48px 96px;
+}
+
+main p {
+  line-height: 1.75;
+  margin-bottom: 48px;
+}
+
+main > article img {
+  float: left;
+  width: 300px;
+  height: auto;
+  margin-right: 24px;
+  margin-bottom: 6px;
+}
+
+footer {
+  margin-top: auto;
+  background-color: var(--gray);
+  text-align: center;
+  text-transform: uppercase;
+  padding: 24px 0;
+  color: var(--off-white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
